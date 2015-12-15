@@ -85,8 +85,7 @@ def cleanFreqList(freqList):
     print("%s has been cleaned..." % freqList)
               
 
-def main(freqListFile):
-    counter = 0
+def main(freqListFile,  counter):
     ImageList = []
     with open(freqListFile, "r", encoding="utf8") as f1:
         f1 = f1.read().split("\n")
@@ -99,10 +98,17 @@ def main(freqListFile):
             ImageList.append("\t".join(l))
             #if counter % 100 == 0:
             #    break
-    with open("list_with_images.txt", "w", encoding="utf8") as f9:
+    with open("List_%s.txt" % freqListFile, "w", encoding="utf8") as f9:
         f9.write("\n".join(ImageList))
     print("Image generation complete...")
+    return(counter)
 
 #cleanFreqList("corpus_Auto_WordFrequencies.txt")
 #main("corpus_Auto_WordFrequencies_clean.txt")
-        
+
+counter = 0
+counter = main("wfreq_aa", counter)
+counter = main("wfreq_ab", counter)
+counter = main("wfreq_ac", counter)
+counter = main("wfreq_ad", counter)
+
